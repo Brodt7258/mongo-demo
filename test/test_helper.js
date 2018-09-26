@@ -16,9 +16,12 @@ before((done) => {
 });
 
 beforeEach(async () => {
+    const { users, comments, blogposts } = mongoose.connection.collections;
     try {
-        await mongoose.connection.collections.users.drop();
+        await users.drop();
+        await comments.drop();
+        await blogposts.drop();
     } catch(e) {
-        console.log('skip collection drop');
+        //console.log('skip collection drop');
     }
 });
